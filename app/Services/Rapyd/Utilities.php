@@ -11,7 +11,7 @@ class Utilities
 
     // makeRequest method - Includes the logic to communicate with the Rapyd sandbox server.
     public static function makeRequest($method, $path, $body = null) {
-        $base_url = 'https://sandboxapi.rapyd.net';
+        $base_url = env('RAPYD_BASE_URL');
         $access_key = env('RAPYD_ACCESS_KEY');     // The access key received from Rapyd.
         $secret_key = env('RAPYD_SECRET_KEY');     // Never transmit the secret key by itself.
 
@@ -69,8 +69,8 @@ class Utilities
 
     public static function AuthWebhookRequest($incomeSign, $urlPath, $salt, $timestamp, $body)
     {
-        $access_key = $_ENV['ACCESS_KEY'];     // The access key received from Rapyd.
-        $secret_key = $_ENV['SECRET_KEY'];     // Never transmit the secret key by itself.
+        $access_key = env('RAPYD_ACCESS_KEY');     // The access key received from Rapyd.
+        $secret_key = env('RAPYD_SECRET_KEY');     // Never transmit the secret key by itself.
 
         $sig_string = $urlPath.$salt.$timestamp.$access_key.$secret_key.$body;
 

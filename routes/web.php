@@ -18,4 +18,9 @@ use App\Http\Controllers\HomeController;
     return view('welcome');
 });*/
 
-Route::match(['get', 'post'], '/', [HomeController::class, 'home'])->name('app_home');
+Route::controller(HomeController::class)->group(function(){
+    Route::match(['get', 'post'], '/', 'home')->name('app_home');
+    Route::match(['get', 'post'], '/get_checkout', 'getCheckout')->name('app_get_checkout');
+});
+
+

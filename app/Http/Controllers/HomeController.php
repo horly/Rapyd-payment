@@ -17,8 +17,20 @@ class HomeController extends Controller
 
     function home()
     {
-        dd($this->payments->listPaymentMethodsByCountry());
+        //dd($this->payments->listPaymentMethodsByCountry());
+        //dd($this->payments->getCountries());
+        //dd($this->payments->createCheckout());
+        //dd($this->payments->makePayment());
 
-        return View('home.home');
+        $countries = $this->payments->getCountries(); //retourne un tableau
+
+        return View('home.home', [
+            'countries' => $countries['data']
+        ]);
+    }
+
+    function getCheckout()
+    {
+
     }
 }
