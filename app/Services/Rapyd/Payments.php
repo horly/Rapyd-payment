@@ -24,23 +24,9 @@ Class Payments
         return $response;
     }
 
-    public function createCheckout()
+    public function createCheckout($body)
     {
         $url = '/v1/checkout';
-
-        $body = [
-            "amount" => 100,
-            "complete_checkout_url" => "http://example.com/complete",
-            "country" => "US",
-            "currency" => "USD",
-            "requested_currency" => "USD",
-            "merchant_reference_id" => "950ae8c6-76",
-            "payment_method_types_include" => [
-            ],
-            "payment_method_type_categories" => [
-            ]
-        ];
-
         $response = Utilities::makeRequest('post', $url, $body);
 
         return $response;

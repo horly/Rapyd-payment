@@ -20,7 +20,8 @@ use App\Http\Controllers\HomeController;
 
 Route::controller(HomeController::class)->group(function(){
     Route::match(['get', 'post'], '/', 'home')->name('app_home');
-    Route::match(['get', 'post'], '/get_checkout', 'getCheckout')->name('app_get_checkout');
+    Route::match(['get', 'post'], '/about', 'about')->name('app_about');
+    Route::post('/get_checkout', 'getCheckout')->name('app_get_checkout');
 });
 
 

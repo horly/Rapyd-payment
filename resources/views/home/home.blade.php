@@ -12,17 +12,19 @@
                 </div>
                 <div class="card-body row">
                     <form method="POST" action="{{ route('app_get_checkout') }}">
+                        @csrf
+
                         <div class="mb-3 row">
-                            <label for="name" class="col-md-4 col-form-label">Name</label>
+                            <label for="fullName" class="col-md-4 col-form-label">Name</label>
                             <div class="col-md-8">
-                            <input type="text" readonly class="form-control" id="name" name="name" placeholder="Enter your fullname">
+                            <input type="text" class="form-control" id="fullName" name="fullName" placeholder="Enter your fullname">
                             </div>
                         </div>
 
                         <div class="mb-3 row">
                             <label for="country" class="col-md-4 col-form-label">Payment country</label>
                             <div class="col-md-8">
-                                <select class="form-select" aria-label="country select">
+                                <select class="form-select" id="country" name="country" aria-label="country select">
                                     <option selected>Select the country where you pay</option>
 
                                     @foreach ($countries as $country)
@@ -59,14 +61,14 @@
                             <label for="amount" class="col-md-4 col-form-label">Amount</label>
                             <div class="col-md-8">
                                 <div class="input-group">
-                                    <input type="text" class="form-control" placeholder="0.00" aria-label="" aria-describedby="basic-addon2">
+                                    <input type="text" class="form-control" id="amount" name="amount" placeholder="0.00" aria-label="" aria-describedby="basic-addon2">
                                     <span class="input-group-text" id="currency-selected">GBP</span>
                                 </div>
                             </div>
                         </div>
 
                         <div class="d-grid gap-2">
-                            <button class="btn btn-primary" type="button">Pay</button>
+                            <button class="btn btn-primary" type="submit">Pay</button>
                         </div>
 
                     </form>
